@@ -1,0 +1,3 @@
+variable "cert_arn" {
+}
+
