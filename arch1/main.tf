@@ -87,6 +87,10 @@ resource "aws_default_vpc" "aws_default_vpc_1" {
 resource "aws_lb_target_group" "aws_lb_target_group_11" {
   provider = aws.eu-central-1
 
+  vpc_id      = aws_default_vpc.aws_default_vpc_1.id
+  target_type = "instance"
+  protocol    = "HTTP"
+  port        = 80
 
   tags = {
     env      = "Development"
@@ -113,6 +117,13 @@ resource "aws_lb" "alb_9" {
     env      = "Development"
     archUUID = "27e3a626-c4ac-45d4-ba51-465591a24fa0"
   }
+}
+
+resource "aws_lb_target_group_attachment" "aws_lb_target_group_attachment_14" {
+  provider = aws.eu-central-1
+
+  target_id        = aws_instance.m5_6.id
+  target_group_arn = aws_lb_target_group.aws_lb_target_group_11.arn
 }
 
 resource "aws_security_group" "aws_security_group_3" {
