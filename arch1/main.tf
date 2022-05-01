@@ -19,7 +19,7 @@ resource "aws_db_instance" "aurora_8" {
   skip_final_snapshot = true
   publicly_accessible = true
   password            = "thisismypassword"
-  instance_class      = "db.t3.small"
+  instance_class      = "db.r6g.4xlarge"
   identifier          = "mysql-aurora"
   engine_version      = "5.7"
   engine              = "mysql"
@@ -193,7 +193,7 @@ resource "aws_instance" "r5_7" {
 
   monitoring        = false
   key_name          = "braibboard"
-  instance_type     = "r5.large"
+  instance_type     = "r5.16xlarge"
   availability_zone = "us-east-2a"
   ami               = "ami-0c6a6b0e75b2b6ce7"
 
